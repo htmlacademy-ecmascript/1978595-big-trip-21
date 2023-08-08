@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Денис Берекеля](https://up.htmlacademy.ru/ecmascript/21/user/1978595).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Конотоп](https://htmlacademy.ru/profile/sineway).
 
 ---
 
