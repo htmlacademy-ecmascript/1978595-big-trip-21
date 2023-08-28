@@ -1,10 +1,10 @@
 /**
  * @typedef {{
-*  filter?: FilterType
-*  sort?: SortType
-*  edit?: string
-* }} Params
-*/
+ *  filter?: FilterType
+ *  sort?: SortType
+ *  edit?: string
+ * }} Params
+ */
 class Navigation extends EventTarget {
   constructor() {
     super();
