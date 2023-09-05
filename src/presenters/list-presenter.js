@@ -16,6 +16,7 @@ class ListPresenter extends Presenter {
     this.view.addEventListener('open', this.onViewOpen.bind(this));
     this.view.addEventListener('close', this.onViewClose.bind(this));
     this.view.addEventListener('favorite', this.onViewFavorite.bind(this));
+    this.view.addEventListener('edit', this.onViewEdit.bind(this));
   }
 
   /**
@@ -25,7 +26,7 @@ class ListPresenter extends Presenter {
     const params = this.navigation.getParams();
     const points = this.model.getPoints(params);
     const destinations = this.model.getDestinations();
-    const offerGroups = this.model.getOfferGroup();
+    const offerGroups = this.model.getOfferGroups();
 
     const items = points.map((point)=>{
       const {offers} = offerGroups.find((group) => group.type === point.type);
@@ -115,6 +116,41 @@ class ListPresenter extends Presenter {
     card.render();
   }
 
+  /**
+   * @param {CustomEvent<HTMLInputElement> & {
+   *  target: import('../views/editor-view').default
+   * }} event
+   */
+  onViewEdit(event) {
+    const editor = event.target;
+    const input = event.detail;
+
+    if (input.name === 'event-type') {
+      const offerGroups = this.model.getOfferGroups();
+      const {offers} = offerGroups.find((group) => group.type === input.value);
+
+      editor.state.offers = offers.map((offer) => ({
+        ...offer,
+        isSelected: false
+      }));
+
+      editor.state.types.forEach((type) => {
+        type.isSelected = type.value === input.value;
+      });
+
+      editor.render();
+      return;
+    }
+
+    if (input.name === 'event-destination') {
+      editor.state.destinations.forEach((destination) => {
+        destination.isSelected = destination.name === input.value;
+      });
+
+
+      editor.render();
+    }
+  }
 }
 
 export default ListPresenter;
