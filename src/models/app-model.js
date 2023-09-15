@@ -84,6 +84,19 @@ class AppModel extends Model {
    * @param {PointModel} model
    * @returns {Promise<void>}
    */
+  async addPoint(model) {
+    // TODO: Добавить данные на сервере
+    const data = model.toJSON();
+
+    data.id = crypto.randomUUID();
+
+    this.points.push(data);
+  }
+
+  /**
+   * @param {PointModel} model
+   * @returns {Promise<void>}
+   */
   async updatePoint(model) {
     // TODO: Обновить данные на сервере
     const data = model.toJSON();
@@ -92,6 +105,16 @@ class AppModel extends Model {
     this.points.splice(index, 1, data);
   }
 
+  /**
+   * @param {string} id
+   * @returns {Promise<void>}
+   */
+  async deletePoint(id) {
+    // TODO: Удалить данные на сервере
+    const index = this.points.findIndex((point) => point.id === id);
+
+    this.points.splice(index, 1);
+  }
 
   /**
    * @returns {Array<Destination>}
