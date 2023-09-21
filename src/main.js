@@ -5,7 +5,6 @@ import './views/sort-view.js';
 import './views/list-view.js';
 import './views/placeholder-view.js';
 import './views/ui-blocker-view.js';
-import UiBlockerPresenter from './presenters/ui-blocker-presenter.js';
 
 import AppModel from './models/app-model.js';
 import ApiService from './services/api-service.js';
@@ -16,6 +15,7 @@ import AddButtonPresenter from './presenters/add-button-presenter.js';
 import SortPresenter from './presenters/sort-presenter.js';
 import ListPresenter from './presenters/list-presenter.js';
 import PlaceholderPresenter from './presenters/placeholder-presenter.js';
+import UiBlockerPresenter from './presenters/ui-blocker-presenter.js';
 
 const apiService = new ApiService({authorization: 'Basic abc123'});
 const appModel = new AppModel(apiService);
