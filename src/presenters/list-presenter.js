@@ -91,7 +91,7 @@ class ListPresenter extends Presenter {
     const point = this.model.createPoint();
 
     Object.assign(point, {
-      id: state.id,
+      id: (state.id === 'draft') ? undefined : state.id,
       type: state.types.find((type) => type.isSelected).value,
       destinationId: state.destinations.find((destination) => destination.isSelected)?.id,
       dateFrom: state.dateFrom,
@@ -208,6 +208,8 @@ class ListPresenter extends Presenter {
     const editor = event.target;
     const point = this.createPoint(editor.state);
 
+    editor.setState({isSaving: true});
+
     if (editor.state.id === 'draft') {
       await this.model.addPoint(point);
     } else {
@@ -224,6 +226,7 @@ class ListPresenter extends Presenter {
   async onViewDelete(event) {
     const editor = event.target;
 
+    editor.setState({isDeleting: true});
     await this.model.deletePoint(editor.state.id);
     editor.dispatch('close');
   }
