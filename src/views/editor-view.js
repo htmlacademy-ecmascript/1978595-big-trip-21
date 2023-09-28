@@ -269,7 +269,7 @@ class EditorView extends View {
     const {destinations} = this.state;
     const selectedDestination = destinations.find((destination) => destination.isSelected);
 
-    if (!selectedDestination) {
+    if (!selectedDestination || !selectedDestination.description) {
       return '';
     }
 
