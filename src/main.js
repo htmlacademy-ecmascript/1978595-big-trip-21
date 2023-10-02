@@ -17,7 +17,7 @@ import ListPresenter from './presenters/list-presenter.js';
 import PlaceholderPresenter from './presenters/placeholder-presenter.js';
 import UiBlockerPresenter from './presenters/ui-blocker-presenter.js';
 
-const apiService = new ApiService({authorization: 'Basic abc123'});
+const apiService = new ApiService({authorization: 'Basic Denver1987'});
 const appModel = new AppModel(apiService);
 
 new PlaceholderPresenter(document.querySelector('placeholder-view'), appModel);
